@@ -1,0 +1,111 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+#pokedex {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.upper-left-buttons {
+  position: absolute;
+  display: flex;
+  gap: 0.5em;
+  top: 50px;
+  left: 152px;
+  z-index: -999;
+
+  .circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    animation: blink 2s infinite;
+
+    &.red {
+      background: radial-gradient(circle, white 0%, red 40%);
+    }
+
+    &.yellow {
+      background: radial-gradient(circle, white 0%, rgb(223, 223, 68) 40%);
+    }
+
+    &.green {
+      background: radial-gradient(circle, white 0%, green 40%);
+    }
+  }
+}
+
+#upper-left-light {
+  position: absolute;
+  top: 8%;
+  left: 9%;
+  width: 75px;
+  height: 75px;
+  background: radial-gradient(circle, white 0%, blue 80%);
+  border-radius: 50%;
+  animation: blink 3s infinite;
+  z-index: -999;
+}
+
+.sprite-screen {
+  position: absolute;
+  display: flex;
+  background-color: white;
+  left: 9%;
+  top: 32%;
+  width: 300px;
+  height: 180px;
+  justify-content: center;
+  z-index: -1;
+}
+
+.cry-button {
+  position: absolute;
+  bottom: 23%;
+  border-radius: 50%;
+  left: 72px;
+  width: 55px;
+  height: 55px;
+  background: radial-gradient(
+    circle at 55% 40%,
+    rgb(26, 26, 26) 50%,
+    black 60%
+  );
+  opacity: 1;
+  z-index: 1;
+  border: none;
+
+  &:hover {
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgb(26, 26, 26) 60%,
+      black 80%
+    );
+  }
+}
+
+.data-screen {
+  position: absolute;
+  right: 9%;
+  top: 35%;
+  background-color: white;
+  width: 260px;
+  height: 100px;
+  z-index: -1;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
