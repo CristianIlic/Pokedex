@@ -54,18 +54,24 @@ function App() {
 
         <button className="cry-button" onClick={handleCry}></button>
 
-        <div className="data-screen">{/* AQUI VA LA DATA DE LOS POKES */}</div>
-      </div>
-      <div className="panel-info">
-        <h2>{pokemon?.name?.toUpperCase()}</h2>
-        <p>Altura: {pokemon ? pokemon.height / 10 : ""} m</p>
-        <p>Peso: {pokemon ? pokemon.weight / 10 : ""} kg</p>
-        <p>Tipo: </p>
-        <ul>
-          {pokemon?.types?.map((t, i) => (
-            <li key={i}>{t.type.name}</li>
-          ))}
-        </ul>
+        <div className="data-screen">
+          {pokemon && (
+            <div className="screen-content">
+              <h3>{pokemon.name.toUpperCase()}</h3>
+              <div className="stats">
+                <span>Alt: {pokemon.height / 10} m</span>
+                <span>Peso: {pokemon.weight / 10} kg</span>
+              </div>
+              <div className="types-list">
+                {pokemon.types.map((t, i) => (
+                  <span key={i} className={`type-badge ${t.type.name}`}>
+                    {t.type.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
