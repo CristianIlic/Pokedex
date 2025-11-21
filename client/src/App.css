@@ -109,10 +109,141 @@
   position: absolute;
   right: 9%;
   top: 35%;
-  background-color: white;
+  background-color: #e3e3e3;
   width: 260px;
   height: 100px;
   z-index: -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 0 12px;
+  box-sizing: border-box;
+  color: #333;
+  text-align: left;
+  overflow: hidden;
+}
+
+.screen-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.screen-content h3 {
+  margin: 0;
+  font-size: 11px;
+  border-bottom: 2px solid #ccc;
+  color: black;
+  padding-bottom: 2px;
+  width: 100%;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: black;
+  font-size: 9px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  padding-right: 15px;
+}
+
+.types-list {
+  display: flex;
+  gap: 8px;
+}
+
+.type-badge {
+  background-color: #333;
+  color: white;
+  font-size: 8px;
+  padding: 3px 5px;
+  border-radius: 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 #000, 2px 2px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.5);
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.type-badge.normal {
+  background-color: #a8a77a;
+  border-color: #6d6d4e;
+}
+.type-badge.fire {
+  background-color: #ee8130;
+  border-color: #9c531f;
+}
+.type-badge.water {
+  background-color: #6390f0;
+  border-color: #445e9c;
+}
+.type-badge.electric {
+  background-color: #f7d02c;
+  border-color: #a1871f;
+}
+.type-badge.grass {
+  background-color: #7ac74c;
+  border-color: #4e8234;
+}
+.type-badge.ice {
+  background-color: #96d9d6;
+  border-color: #638d8d;
+}
+.type-badge.fighting {
+  background-color: #c22e28;
+  border-color: #7d1f1a;
+}
+.type-badge.poison {
+  background-color: #a33ea1;
+  border-color: #682a68;
+}
+.type-badge.ground {
+  background-color: #e2bf65;
+  border-color: #927d44;
+}
+.type-badge.flying {
+  background-color: #a98ff3;
+  border-color: #6d5e9c;
+}
+.type-badge.psychic {
+  background-color: #f95587;
+  border-color: #a13959;
+}
+.type-badge.bug {
+  background-color: #a6b91a;
+  border-color: #6d7a15;
+}
+.type-badge.rock {
+  background-color: #b6a136;
+  border-color: #786824;
+}
+.type-badge.ghost {
+  background-color: #735797;
+  border-color: #493963;
+}
+.type-badge.dragon {
+  background-color: #6f35fc;
+  border-color: #4924a1;
+}
+.type-badge.steel {
+  background-color: #b7b7ce;
+  border-color: #787887;
+}
+.type-badge.dark {
+  background-color: #705746;
+  border-color: #49392f;
+}
+.type-badge.fairy {
+  background-color: #d685ad;
+  border-color: #9b6470;
 }
 
 @keyframes blink {
