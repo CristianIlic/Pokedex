@@ -61,7 +61,7 @@ function App() {
         <button className="cry-button" onClick={handleCry}></button>
 
         <div className="data-screen">
-          {pokemon && (
+          {pokemon?.name && (
             <div className="screen-content">
               <h3>{pokemon.name.toUpperCase()}</h3>
               <div className="stats">
