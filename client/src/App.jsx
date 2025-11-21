@@ -122,8 +122,6 @@ function App() {
 
   return (
     <>
-      <input type="text" onChange={(e) => setSearch(e.target.value)} />
-      <button onClick={fetchAPI}>Buscar</button>
       <div id="pokedex">
         <div id="upper-left-light" />
         <div className="upper-left-buttons">
@@ -201,6 +199,10 @@ function App() {
               {label}
             </div>
           ))}
+        </div>
+        <div className="search-box">
+          <input type="text" onChange={(e) => setSearch(e.target.value)} />
+          <button onClick={fetchAPI}>Buscar</button>
         </div>
       </div>
     </>
