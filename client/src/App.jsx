@@ -47,8 +47,8 @@ function App() {
         return (
           <>
             <div className="stats">
-              {pokemon.abilities.map((skill) => (
-                <p>{skill.ability.name.toUpperCase()}</p>
+              {pokemon.abilities.map((skill, index) => (
+                <p key={index}>{skill.ability.name.toUpperCase()}</p>
               ))}
             </div>
           </>
