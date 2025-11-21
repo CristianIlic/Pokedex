@@ -5,6 +5,8 @@ function App() {
   const [pokemon, setPokemon] = useState(null);
   const [search, setSearch] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [selectedButton, setSelectedButton] = useState(1);
+  const buttonLabels = ["INFO", "SKILLS", "MOVES", "", "", "", "", "", "", ""];
 
   const fetchAPI = async () => {
     try {
@@ -18,6 +20,52 @@ function App() {
       console.error(error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const getScreenText = () => {
+    switch (selectedButton) {
+      case 1:
+        return (
+          <>
+            <div className="stats">
+              <span>Alt: {pokemon.height / 10} m</span>
+              <span>Peso: {pokemon.weight / 10} kg</span>
+              <span>EXP: {pokemon.base_experience}</span>
+            </div>
+            <div className="types-list">
+              {pokemon.types.map((t, i) => (
+                <span key={i} className={`type-badge ${t.type.name}`}>
+                  {t.type.name}
+                </span>
+              ))}
+            </div>
+          </>
+        );
+
+      case 2:
+        return (
+          <>
+            <div className="stats">
+              {pokemon.abilities.map((skill) => (
+                <p>{skill.ability.name.toUpperCase()}</p>
+              ))}
+            </div>
+          </>
+        );
+
+      case 3:
+        return (
+          <>
+            <div className="moves-list">
+              {pokemon.moves.map((move) => (
+                <p>{move.move.name}</p>
+              ))}
+            </div>
+          </>
+        );
+      default:
+        break;
     }
   };
 
@@ -59,24 +107,25 @@ function App() {
         </div>
 
         <button className="cry-button" onClick={handleCry}></button>
-
         <div className="data-screen">
           {pokemon?.name && (
             <div className="screen-content">
               <h3>{pokemon.name.toUpperCase()}</h3>
-              <div className="stats">
-                <span>Alt: {pokemon.height / 10} m</span>
-                <span>Peso: {pokemon.weight / 10} kg</span>
-              </div>
-              <div className="types-list">
-                {pokemon.types.map((t, i) => (
-                  <span key={i} className={`type-badge ${t.type.name}`}>
-                    {t.type.name}
-                  </span>
-                ))}
-              </div>
+              {getScreenText()}
             </div>
           )}
+        </div>
+
+        <div className="filter-buttons">
+          {buttonLabels.map((label, i) => (
+            <div
+              key={i}
+              className="filter-button"
+              onClick={() => setSelectedButton(i + 1)}
+            >
+              {label}
+            </div>
+          ))}
         </div>
       </div>
     </>

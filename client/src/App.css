@@ -84,6 +84,38 @@
   }
 }
 
+.filter-buttons {
+  display: grid;
+  position: absolute;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  right: 80px;
+  top: 52%;
+}
+
+.filter-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 47px;
+  height: 35px;
+  background: linear-gradient(rgb(40, 124, 249), rgb(0, 72, 255));
+  border-top: 3px solid #6e6e6e;
+  border-left: 3px solid #5a5a5a;
+  border-right: 3px solid #222222;
+  border-bottom: 3px solid #111111;
+  border-radius: 4px;
+  font-size: 0.4em;
+  box-shadow: 0 4px 0 #0a0a0a;
+  transition: transform 0.1s, box-shadow 0.1s;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #0a0a0a;
+    border-top-color: #4a4a4a;
+  }
+}
+
 .cry-button {
   position: absolute;
   bottom: 23%;
@@ -92,40 +124,39 @@
   width: 55px;
   height: 55px;
   background: radial-gradient(
-    circle at 55% 40%,
+    circle at 50% 45%,
     rgb(26, 26, 26) 50%,
     black 60%
   );
   opacity: 1;
   z-index: 1;
   border: none;
+  box-shadow: 0 4px 8px 2px #0a0a0a;
+
+  transition: transform 0.1s, box-shadow 0.1s;
 
   &:hover {
-    background: radial-gradient(
-      circle at 50% 50%,
-      rgb(26, 26, 26) 60%,
-      black 80%
-    );
+    transform: translate(-1px, 1px);
   }
 }
 
 .data-screen {
   position: absolute;
-  right: 9%;
+  right: 80px;
   top: 35%;
   background-color: #e3e3e3;
   width: 260px;
   height: 100px;
-  z-index: -1;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: flex-start;
-  padding: 0 12px;
+  padding: 10px 12px;
   box-sizing: border-box;
+  border-radius: 4px;
   color: #333;
   text-align: left;
   overflow: hidden;
+  z-index: -1;
 }
 
 .screen-content {
@@ -146,13 +177,19 @@
 
 .stats {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   font-weight: bold;
   color: black;
   font-size: 9px;
-  margin-bottom: 10px;
   box-sizing: border-box;
   padding-right: 15px;
+}
+
+.moves-list {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.5em;
 }
 
 .types-list {
