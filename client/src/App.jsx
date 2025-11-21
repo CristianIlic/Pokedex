@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
   const [pokemon, setPokemon] = useState(null);
@@ -7,6 +7,12 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [selectedButton, setSelectedButton] = useState(1);
   const buttonLabels = ["INFO", "SKILLS", "MOVES", "", "", "", "", "", "", ""];
+
+  const leftButtonRef = useRef();
+  const downButtonRef = useRef();
+  const rightButtonRef = useRef();
+  const upButtonRef = useRef();
+  const dataScreenRef = useRef();
 
   const fetchAPI = async () => {
     try {
@@ -77,6 +83,32 @@ function App() {
     }
   };
 
+  const handleButtonClick = () => {
+    const audio = new Audio("/sounds/dpad-press.mp3");
+    audio.volume = 0.1;
+    audio.play();
+  };
+
+  useEffect(() => {
+    if (!downButtonRef.current || !dataScreenRef.current) return;
+
+    const handleScrollDown = () => {
+      dataScreenRef.current.scrollTop += 20;
+    };
+
+    const handleScrollUp = () => {
+      dataScreenRef.current.scrollTop -= 20;
+    };
+
+    downButtonRef.current.addEventListener("click", handleScrollDown);
+    upButtonRef.current.addEventListener("click", handleScrollUp);
+
+    return () => {
+      downButtonRef.current.removeEventListener("click", handleScrollDown);
+      upButtonRef.current.removeEventListener("click", handleScrollUp);
+    };
+  }, [pokemon]);
+
   useEffect(() => {
     fetchAPI();
   }, []);
@@ -107,7 +139,30 @@ function App() {
         </div>
 
         <button className="cry-button" onClick={handleCry}></button>
-        <div className="data-screen">
+        <div className="dpad">
+          <img src="/dpad.png" alt="" />
+          <button
+            className="dpad-arrow left"
+            ref={leftButtonRef}
+            onClick={handleButtonClick}
+          ></button>
+          <button
+            className="dpad-arrow down"
+            ref={downButtonRef}
+            onClick={handleButtonClick}
+          ></button>
+          <button
+            className="dpad-arrow right"
+            ref={rightButtonRef}
+            onClick={handleButtonClick}
+          ></button>
+          <button
+            className="dpad-arrow up"
+            ref={upButtonRef}
+            onClick={handleButtonClick}
+          ></button>
+        </div>
+        <div className="data-screen" ref={dataScreenRef}>
           {pokemon?.name && (
             <div className="screen-content">
               <h3>{pokemon.name.toUpperCase()}</h3>
@@ -121,7 +176,10 @@ function App() {
             <div
               key={i}
               className="filter-button"
-              onClick={() => setSelectedButton(i + 1)}
+              onClick={() => {
+                handleButtonClick();
+                setSelectedButton(i + 1);
+              }}
             >
               {label}
             </div>

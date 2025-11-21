@@ -140,6 +140,53 @@
   }
 }
 
+.dpad {
+  position: absolute;
+  left: 173px;
+  bottom: 95px;
+
+  img {
+    width: 30%;
+  }
+}
+
+.dpad-arrow {
+  width: 25px;
+  height: 25px;
+  margin: 1px;
+  background-color: black;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.1s ease;
+  border: none;
+  border-radius: 10%;
+
+  &:hover {
+    opacity: 0.2;
+  }
+
+  &.left {
+    left: 115px;
+    bottom: 38px;
+  }
+
+  &.down {
+    left: 145px;
+    bottom: 8px;
+  }
+
+  &.right {
+    left: 175px;
+    bottom: 38px;
+  }
+
+  &.up {
+    left: 145px;
+    bottom: 67px;
+  }
+}
+
 .data-screen {
   position: absolute;
   right: 80px;
