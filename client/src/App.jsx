@@ -10,7 +10,7 @@ function App() {
     try {
       const response = await fetch(`http://localhost:1234/${search}`);
       if (!response.ok) {
-        console.log("Caca");
+        console.error("Fallo en la respuesta");
       }
       const data = await response.json();
       setPokemon(data);
@@ -49,7 +49,13 @@ function App() {
         <img src="/pokedex.svg" alt="" />
 
         <div className="sprite-screen">
-          <img src={pokemon?.sprites.front_default} alt="" />
+          {pokemon?.sprites?.front_default ? (
+            <img src={pokemon?.sprites?.front_default} alt="" />
+          ) : (
+            <div className="not-found">
+              <p>Pokemon no encontrado</p>
+            </div>
+          )}
         </div>
 
         <button className="cry-button" onClick={handleCry}></button>
