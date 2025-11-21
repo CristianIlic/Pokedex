@@ -5,6 +5,7 @@ function App() {
   const [pokemon, setPokemon] = useState(null);
   const [search, setSearch] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [selectedButton, setSelectedButton] = useState(1);
   const buttonLabels = ["INFO", "SKILLS", "MOVES", "", "", "", "", "", "", ""];
 
@@ -79,7 +80,11 @@ function App() {
     if (pokemon?.cries?.latest) {
       const audio = new Audio(pokemon.cries.latest);
       audio.volume = 0.1;
+      setIsPlaying(true);
       audio.play();
+      audio.onended = () => {
+        setIsPlaying(false);
+      };
     }
   };
 
@@ -136,6 +141,18 @@ function App() {
               <p>Pokemon no encontrado</p>
             </div>
           )}
+        </div>
+
+        <div className="sound-screen">
+          <div className="wave-container">
+            {/* Generamos varias barras para simular la onda */}
+            {[...Array(10)].map((_, i) => (
+              <div
+                key={i}
+                className={`wave-bar ${isPlaying ? "animating" : ""}`}
+              ></div>
+            ))}
+          </div>
         </div>
 
         <button className="cry-button" onClick={handleCry}></button>
