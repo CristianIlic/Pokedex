@@ -64,8 +64,8 @@ function App() {
         return (
           <>
             <div className="moves-list">
-              {pokemon.moves.map((move) => (
-                <p>{move.move.name}</p>
+              {pokemon.moves.map((move, index) => (
+                <p key={index}>{move.move.name}</p>
               ))}
             </div>
           </>
